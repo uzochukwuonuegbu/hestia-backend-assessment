@@ -10,5 +10,8 @@ describe('PivotCsvService', () => {
     });
 
     describe('transformUploadedCsv', () => {
+        it('should be defined', () => {
+            expect(pivotCsvService).toBeDefined();
+          });
     });
 });
