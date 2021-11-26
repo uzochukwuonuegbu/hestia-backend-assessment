@@ -26,5 +26,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - run: npm install
-      - run: rimraf dist
-      - run: tsc
+      - run: npm run prestart
