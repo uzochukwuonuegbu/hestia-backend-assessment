@@ -3,6 +3,10 @@ import 'reflect-metadata';
 import { Router } from 'express';
 import { Container } from 'typedi';
 import { PivotCsvController } from './controller';
+import multer  from 'multer';
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
 const route = Router();
 
 export default (app: Router) => {
@@ -10,5 +14,5 @@ export default (app: Router) => {
 
   const pivotCsvController = Container.get(PivotCsvController);
 
-  route.post('/transform', (req, res, next) => pivotCsvController.transform(req, res, next));
+  route.post('/transform', upload.single('file', ), (req, res, next) => pivotCsvController.transform(req, res, next));
 };
