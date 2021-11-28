@@ -8,9 +8,14 @@ export class PivotCsvController {
 
   async transform(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log({ req });
-      const result = await this.pivotCsvService.transformUploadedCsv();
-      return res.json({ result });
+      const file = req.file?.buffer;
+      const fileName = req.file?.originalname;
+      // validations for file and filename
+
+      const tmpFile = `${Date.now()}_${fileName}`
+      const input = file?.toString() || '';
+      const result = await this.pivotCsvService.transformUploadedCsv(tmpFile, input);
+      return res.status(200).json(result);
     } catch (e) {
         console.log(' error ', e);
         return next(e);

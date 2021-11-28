@@ -1,14 +1,21 @@
+import path from 'path';
 import { Service } from 'typedi';
+import { pythonPromise, writeFileToRootSync, deleteFileFromRoot } from './utils';
 
 @Service()
 export class PivotCsvService {
     constructor() {}
 
-    public async transformUploadedCsv(): Promise<any[]> {
+    public async transformUploadedCsv(tmpFile: string, inputString: string) {
         try {
-            return ['xxx', 'xx1', 'xx2'];
+            writeFileToRootSync(tmpFile, inputString);
+            const pythonFile = path.join(__dirname, '../../pivotCsv.py')
+            const dataFromPython = await pythonPromise(pythonFile, [tmpFile, inputString]);
+            deleteFileFromRoot(tmpFile);
+            return dataFromPython;
         } catch (error) {
             console.log(error);
+            deleteFileFromRoot(tmpFile);
             throw error;
         }
     }
