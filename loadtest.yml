@@ -1,0 +1,23 @@
+config:
+  target: "http://127.0.0.1:8000"
+  phases:
+    - Duration: 5
+      arrivalRate: 2
+  # Add payload element when CSV is loaded. 
+  payload:
+    # Define the coping file and fields to load
+    path: "output.csv"
+    fields:
+     - "cycle.id"
+    # Specify sequential if you want to run csv in order from the beginning 
+    order: sequence
+    # Ignore the first line of the csv
+    skipHeader: true
+scenarios:
+  - name: "Search"
+    flow:
+      - log: "this yml log, flow: {{ cycle.id }}"
+      - post:
+          url: "/pivot-csv/transform"
+          json:
+            data: {{ cycle.id }}
