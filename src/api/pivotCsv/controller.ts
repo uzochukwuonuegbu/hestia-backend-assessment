@@ -9,13 +9,21 @@ export class PivotCsvController {
   async transform(req: Request, res: Response, next: NextFunction) {
     try {
       const file = req.file?.buffer;
-      const fileName = req.file?.originalname;
       // validations for file and filename
 
-      const tmpFile = `${Date.now()}_${fileName}`
-      const input = file?.toString() || '';
-      const result = await this.pivotCsvService.transformUploadedCsv(tmpFile, input);
+      const input = file?.toString('utf8') || '';
+      const result = await this.pivotCsvService.transformUploadedCsv(input);
       return res.status(200).json(result);
+    } catch (e) {
+        console.log(' error ', e);
+        return next(e);
+    }
+  }
+
+  async test(req: Request, res: Response, next: NextFunction) {
+    try {
+      console.log('TESTT!!')
+      return res.status(200).json({});
     } catch (e) {
         console.log(' error ', e);
         return next(e);

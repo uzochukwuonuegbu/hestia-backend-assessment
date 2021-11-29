@@ -14,5 +14,6 @@ export default (app: Router) => {
 
   const pivotCsvController = Container.get(PivotCsvController);
 
-  route.post('/transform', upload.single('file', ), (req, res, next) => pivotCsvController.transform(req, res, next));
+  route.post('/transform', upload.single('file'), (req, res, next) => pivotCsvController.transform(req, res, next));
+  route.get('/', (req, res, next) => pivotCsvController.test(req, res, next));
 };
