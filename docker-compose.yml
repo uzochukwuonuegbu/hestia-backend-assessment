@@ -1,0 +1,11 @@
+version: "3"
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # environment:
+    #   - API_URL=https://api.hestia.earth
+    #   - WEB_URL=https://www.hestia.earth
+    ports:
+      - '8000:8000'
