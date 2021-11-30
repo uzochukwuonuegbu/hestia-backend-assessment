@@ -1,9 +1,9 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "Hestia backend Assessment API",
+        "description": "Hestia Backend Assessment API",
         "version": "1.0.0",
-        "title": "Hestia backend Assessment API",
+        "title": "Hestia Backend Assessment API",
         "contact": {
             "email": "uzochukwu.onuegbu25@gmail.com"
         },
@@ -26,11 +26,9 @@
                     {
                         "in": "formData",
                         "name": "file",
-                        "description": "The uploaded file data",
+                        "description": "The uploaded CSV file",
                         "required": true,
-                        "schema": {
-                            "type": "file"
-                        }
+                        "type": "file"
                     }
                 ],
                 "responses": {
