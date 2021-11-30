@@ -10,21 +10,10 @@ export class PivotCsvController {
     try {
       const { query } = req;
       const file = req.file?.buffer;
-      // validations for file and filename
 
-      const input = file?.toString('utf8') || '';
+      const input = file || '';
       const result = await this.pivotCsvService.transformUploadedCsv(input, query);
       return res.status(200).json(result);
-    } catch (e) {
-        console.log(' error ', e);
-        return next(e);
-    }
-  }
-
-  async test(req: Request, res: Response, next: NextFunction) {
-    try {
-      console.log('TESTT!!')
-      return res.status(200).json({});
     } catch (e) {
         console.log(' error ', e);
         return next(e);
