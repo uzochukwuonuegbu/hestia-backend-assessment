@@ -10,10 +10,10 @@
 
 _Note:_ _Make sure to have Docker installed_
 
-- RUN: **docker-compose up -d** (installs NodeJS and python and needed dependencies, artillery for load test and typesctip globally)
+- RUN: *docker-compose up -d* (installs NodeJS and python and needed dependencies, artillery for load test and typesctip globally)
 
 ## Endpoint:
-    - POST **http://localhost:8000/pivot-csv/transform** (Accepts a csv file, as seen in swagger docs)
+    - POST *http://localhost:8000/pivot-csv/transform* (Accepts a csv file, as seen in swagger docs)
 
 # API Docs:
     - http://localhost:8000/docs
@@ -21,7 +21,7 @@ _Note:_ _Make sure to have Docker installed_
 # Tests:
 
 ## Unit Tests:
-    - Run: **npm test**
+    - Run: *npm test*
 
 ## Load Test:
-    - Run: **artillery run loadtest.yml**
+    - Run: *artillery run loadtest.yml*
