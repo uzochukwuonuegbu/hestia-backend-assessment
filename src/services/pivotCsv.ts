@@ -6,14 +6,14 @@ import { pythonPromise } from './utils';
 export class PivotCsvService {
     constructor() {}
 
-    public async transformUploadedCsv(inputString: string) {
+    public async transformUploadedCsv(inputString: string, query: any) {
         let stringOrFilepath = inputString;
         let loadtest = 'FALSE';
         try {
             const pythonFile = path.join(__dirname, '../../pivotCsv.py')
             
             // hack to handle loadtests
-            if (inputString === '') {
+            if (query?.loadtest === 'true') {
                 stringOrFilepath = path.join(__dirname, '../../sample.csv');
                 loadtest = 'TRUE';
             }

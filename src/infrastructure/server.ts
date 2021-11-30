@@ -1,8 +1,10 @@
+import fs from 'fs';
 import { NextFunction, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import * as express from 'express';
 import helmet from 'helmet';
+import swaggerUI from 'swagger-ui-express';
 import routes from '../api';
 
 export default (app: express.Application) => {
@@ -10,6 +12,11 @@ export default (app: express.Application) => {
     app.use(cors());
     app.use(helmet());
     app.use(bodyParser.json());
+
+    // set up swagger docs
+    const swaggerFile = (process.cwd() + "/src/api/swagger/swagger.json");
+    const swaggerData = fs.readFileSync(swaggerFile, 'utf8');
+    app.use('/docs', swaggerUI.serve, swaggerUI.setup(JSON.parse(swaggerData)));
 
     app.use('/', routes);
 

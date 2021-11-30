@@ -1,0 +1,50 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Hestia backend Assessment API",
+        "version": "1.0.0",
+        "title": "Hestia backend Assessment API",
+        "contact": {
+            "email": "uzochukwu.onuegbu25@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "schemes": ["http"],
+    "host": "localhost:8000",
+    "basePath": "/",
+    "paths" : {
+        "/pivot-csv/transform" : {
+            "post" : {
+                "summary" : "Transform CSV using pivot_csv python script",
+                "description": "Transform CSV using pivot_csv python script",
+                "produces": ["application/json"],
+                "consumes": ["multipart/form-data"],
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "file",
+                        "description": "The uploaded file data",
+                        "required": true,
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Invalid csv file"
+                    }
+                }
+            }
+        }
+    }
+}
