@@ -35,7 +35,7 @@ jobs:
         uses: apardo04/locust-github-action@master
         with:
           LOCUSTFILE: "locustfile.py"
-          URL:  "http://localhost:8000"
+          URL:  "http://127.0.0.1:8000"
           USERS: "100"
           RATE: "100"
           RUNTIME: "10s"
