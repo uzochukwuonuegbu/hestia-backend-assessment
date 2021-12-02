@@ -27,7 +27,8 @@ jobs:
 
       - run: npm install
       - run: npm test
-      - run: npm run start
+      - run: docker-compose up -d
+
       - name: Run Load Test
         uses: apardo04/locust-github-action@master
         with:
@@ -36,4 +37,3 @@ jobs:
           USERS: "100"
           RATE: "100"
           RUNTIME: "10s"
-      # - run: locust --host=http://localhost:8000
