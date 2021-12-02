@@ -18,7 +18,7 @@ export const pythonPromise = (filePath: string, args: string[]): Promise<string>
   });
 };
 
-export const streamToString = (stream: ReadStream | Readable, cb: any) => {
+export const streamToString = (stream: ReadStream | Readable, cb: any): Promise<string> => {
   return new Promise((resolve) => {
     const chunks: any[] = [];
     stream.on('data', (chunk) => {

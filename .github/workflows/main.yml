@@ -25,7 +25,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - run: npm install --global typescript
       - run: npm install
-      - run: npm run prestart
       - run: npm test
+      - run: npm run start
+      - run: pip3 install locust
+      - run: locust --host=http://localhost:8000
