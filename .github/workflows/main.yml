@@ -29,8 +29,9 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run start &
-      - name: Run Load Test
       - run: locust -f locustfile.py --headless -u 100 -r 100
+      # - name: Run Load Test
+      # - run: locust -f locustfile.py --headless -u 100 -r 100
         # uses: apardo04/locust-github-action@master
         # with:
         #   LOCUSTFILE: "locustfile.py"
