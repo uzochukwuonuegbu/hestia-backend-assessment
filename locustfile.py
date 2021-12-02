@@ -7,6 +7,8 @@ class PivotCSV(HttpUser):
             "file": self._get_csv_file("sample.csv"),
         }
         self.client.post('/pivot-csv/transform', files=files, verify=False)
+        min_wait = 1  
+        max_wait = 1 
 
     def _get_csv_file(self, file_path, file_content_type='text/csv'):
         import os
