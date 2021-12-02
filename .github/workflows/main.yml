@@ -25,15 +25,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - run: pip3 install locust
       - run: npm install
       - run: npm test
-      - run: npm start & npx wait-on http://localhost:8000
-
+      - run: npm run start &
+       
+        env:
+          PORT: 8000
       - name: Run Load Test
-        uses: apardo04/locust-github-action@master
-        with:
-          LOCUSTFILE: "locustfile.py"
-          URL:  "http://localhost:8000"
-          USERS: "100"
-          RATE: "100"
-          RUNTIME: "10s"
+      - run: locust -f locustfile.py --headless -u 100 -r 100
+        # uses: apardo04/locust-github-action@master
+        # with:
+        #   LOCUSTFILE: "locustfile.py"
+        #   URL:  "http://127.0.0.1:8000"
+        #   USERS: "100"
+        #   RATE: "100"
+        #   RUNTIME: "10s"
