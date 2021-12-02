@@ -1,4 +1,4 @@
-import { PivotCsvService } from '../pivotCsv';
+import PivotCsvService from '../pivotCsv';
 
 describe('PivotCsvService', () => {
 
@@ -11,14 +11,6 @@ describe('PivotCsvService', () => {
 
     describe('transformUploadedCsv', () => {
       it('should successfully process a buffer input', async () => {
-        const fakeBuffer = Buffer.from('Test String');
-
-        jest.spyOn(pivotCsvService, 'transformUploadedCsv').mockImplementation(() => new Promise((resolve) => resolve('Test Result')));
-        const result = await pivotCsvService.transformUploadedCsv(fakeBuffer);
-        expect(result).toBe('Test Result');
-      });
-
-      it('should successfully process a buffer input with loadtest query', async () => {
         const fakeBuffer = Buffer.from('Test String');
 
         jest.spyOn(pivotCsvService, 'transformUploadedCsv').mockImplementation(() => new Promise((resolve) => resolve('Test Result')));
