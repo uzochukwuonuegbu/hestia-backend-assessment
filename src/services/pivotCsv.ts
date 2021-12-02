@@ -4,7 +4,7 @@ import { Service } from 'typedi';
 import { pythonPromise, streamToString } from './utils';
 
 @Service()
-export class PivotCsvService {
+export default class PivotCsvService {
     constructor() {}
 
     public async transformUploadedCsv(buffer: Buffer): Promise<string> {
