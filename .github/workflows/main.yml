@@ -28,10 +28,10 @@ jobs:
       - run: npm install
       - run: npm test
       - run: docker-compose up -d
-      # - uses: addnab/docker-run-action@v3
-      #   with:
-      #     image: test-image:latest
-      #     run: echo "hello world"
+      - uses: addnab/docker-run-action@v3
+        with:
+          image: hestia-backend-assessment_webapp:latest
+          run: npm start
       # - name: Run Load Test
       #   uses: apardo04/locust-github-action@master
       #   with:
