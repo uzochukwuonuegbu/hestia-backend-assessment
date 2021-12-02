@@ -27,16 +27,12 @@ jobs:
 
       - run: npm install
       - run: npm test
-      - run: docker-compose up -d
-      - uses: BerniWittmann/background-server-action@main
+      - run: npm start &
+      - name: Run Load Test
+        uses: apardo04/locust-github-action@master
         with:
-          command: npm test
-          start: npm start
-      # - name: Run Load Test
-      #   uses: apardo04/locust-github-action@master
-      #   with:
-      #     LOCUSTFILE: "locustfile.py"
-      #     URL:  "http://localhost:8000"
-      #     USERS: "100"
-      #     RATE: "100"
-      #     RUNTIME: "10s"
+          LOCUSTFILE: "locustfile.py"
+          URL:  "http://localhost:8000"
+          USERS: "100"
+          RATE: "100"
+          RUNTIME: "10s"
