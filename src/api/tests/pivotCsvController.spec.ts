@@ -8,7 +8,7 @@ describe('PivotCsv Controller', () => {
     controller = Container.get(PivotCsvController);
   });
 
-  it('should be defined', () => {
+  it('should return error if file is not found', () => {
     expect(controller).toBeDefined();
   });
 });
