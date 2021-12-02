@@ -1,7 +1,5 @@
 import { PivotCsvService } from '../pivotCsv';
 
-// PROOF OF CONCEPT
-
 describe('PivotCsvService', () => {
 
     let pivotCsvService: PivotCsvService;

@@ -2,7 +2,7 @@ from locust import HttpUser, task, TaskSet, between
 
 class PivotCSV(HttpUser):
     wait_time = between(1, 5)
-    
+
     @task(2)
     def pivot_csv_transform(self):
         files = {
