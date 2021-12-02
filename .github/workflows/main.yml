@@ -27,22 +27,16 @@ jobs:
 
       - run: npm install
       - run: npm test
-      - run: RUNNER_TRACKING_ID="" && (nohup npm start)
-
-  loadtest:
-          # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      - name: Run Load Test
-        uses: apardo04/locust-github-action@master
-        with:
-          LOCUSTFILE: "locustfile.py"
-          URL:  "http://localhost:8000"
-          USERS: "100"
-          RATE: "100"
-          RUNTIME: "10s"
+      - run: docker-compose -up -d
+      # - uses: addnab/docker-run-action@v3
+      #   with:
+      #     image: test-image:latest
+      #     run: echo "hello world"
+      # - name: Run Load Test
+      #   uses: apardo04/locust-github-action@master
+      #   with:
+      #     LOCUSTFILE: "locustfile.py"
+      #     URL:  "http://localhost:8000"
+      #     USERS: "100"
+      #     RATE: "100"
+      #     RUNTIME: "10s"
