@@ -3,7 +3,6 @@ FROM node:17
 RUN apt-get update
 
 # Install NodeJS and Python
-RUN apt-get install --yes nodejs
 RUN apt install -y npm
 RUN apt-get install -y libzmq3-dev python3-pip
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -16,10 +15,6 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 COPY package*.json /usr/src/app/
-
-# Install runtime dependencies
-RUN npm install -g typescript
-RUN npm install -g artillery
 
 # Install app dependencies
 RUN npm install
