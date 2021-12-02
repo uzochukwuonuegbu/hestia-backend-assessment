@@ -8,7 +8,7 @@ class PivotCSV(HttpUser):
         files = {
             "file": self._get_csv_file("sample.csv"),
         }
-        self.client.post('http://localhost:8000/pivot-csv/transform', files=files, verify=False)
+        self.client.post('/pivot-csv/transform', files=files, verify=False)
 
     def _get_csv_file(self, file_path, file_content_type='text/csv'):
         import os
