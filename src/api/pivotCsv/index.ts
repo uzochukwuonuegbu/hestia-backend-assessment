@@ -5,7 +5,19 @@ import { Container } from 'typedi';
 import { PivotCsvController } from './controller';
 import multer  from 'multer';
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+
+// Validation for csv format
+const upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype == "text/csv") {
+      cb(null, true);
+    } else {
+      cb(null, false);
+      return cb(new Error('Only .csv format allowed!'));
+    }
+  }
+});
 
 const route = Router();
 

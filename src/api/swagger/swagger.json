@@ -33,13 +33,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "successful operation",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Invalid csv file"
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Only .csv format allowed!"
                     }
                 }
             }
