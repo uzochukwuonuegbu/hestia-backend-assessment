@@ -12,5 +12,5 @@ export default {
     /**
      *  Application port.
      */
-    port: process.env.PORT,
+    port: process.env.PORT || 8000,
 };

@@ -27,6 +27,13 @@ jobs:
 
       - run: npm install
       - run: npm test
-      - run: npm run start
-      - run: pip3 install locust
-      - run: locust --host=http://localhost:8000
+      - name: Run Load Test
+        uses: apardo04/locust-github-action@master
+        with:
+          LOCUSTFILE: "locustfile.py"
+          URL:  "http://localhost:8000"
+          USERS: "100"
+          RATE: "100"
+          RUNTIME: "10s"
+      # - run: npm run start
+      # - run: locust --host=http://localhost:8000
